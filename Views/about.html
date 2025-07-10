@@ -1,1 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<!--  -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="TIXORA is a platform to discover shows, events, and activities around you." />
+  <title>TIXORA Contactpage</title>
+  <link rel="icon" href="images/Mainlogo.png" type="image/png" />        <!-- Favicon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Suez+One&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@500&family=SF+Pro+Text:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+
+<body>
+
+
+  <header class="header">                                               <!-- HEADER SECTION -->
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/TicketLogo.png" alt="TIXORA Logo" />           <!-- Logo -->
+      </a>
+    </div>
+
+    <div class="header-search">                                         <!-- Interactive Search Component -->
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search anything..." id="searchInput">
+        <button class="search-button" id="searchButton" aria-label="Search">
+          <svg class="search-icon" viewBox="0 0 512 512">
+            <path d="M505 442.7l-99.7-99.7c28.4-34.9 45.7-79 45.7-127.4C451 96.5 354.5 0 231 0S11 96.5 11 216.6 107.5 433 231 433c48.4 0 92.5-17.3 127.4-45.7l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l22.3-22.3c9.3-9.4 9.3-24.6-.1-34zM231 384c-92.6 0-168-75.4-168-168S138.4 48 231 48s168 75.4 168 168-75.4 168-168 168z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="header-nav">
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link" >Home</a>                    <!-- Navigation Links -->
+        <a href="about.html" class="nav-link" target="_blank" >About</a>                   <!-- Navigation Links -->
+        <a href="contact.html" class="nav-link" target="_blank">Contact</a>               <!-- Navigation Links -->
+      </nav>  
+    </div>
+
+    <div class="login-signup-toggle" id="loginToggle">
+      <a href="login.html" class="toggle-segment login-segment">Sign In</a>
+    </div>
+
+    
+    
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+<!-- The Overlay (optional, if you want to dim the background) -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- The Off‐Canvas Side Menu -->
+<div class="side-menu" id="sideMenu">
+  <!-- Header portion (profile, login/register button, etc.) -->
+  <div class="side-menu-header">
+    <div class="profile-section">
+      <h2 id="hey">Hey!</h2>
+      <a href="login.html" class="login-register-btn" id="login_btn1">Login / Register</a>
+    </div>
+  </div>
+
+  <!-- Navigation / links portion -->
+  <nav class="side-menu-links">
+    <button id="Home">Home</button>
+    <button id="Profile">Profile</button>
+    <button id="YourTickets" onclick="window.location.href='yourtickets.html'">Your Tickets</button>
+    <button id="Sign-out">Sign-out</button>
+  </nav>
+</div>
+
+
+
+    
+  </header>
+
+
+
+
+
+  <main class="homepage-main">                                           <!-- MAIN SECTION -->
+    
+   
+    
+    
+  <main class="about-section">
+    <h1>About TIXORA</h1>
+    <p><strong>TIXORA</strong> is your go-to platform for discovering and booking amazing events, shows, and activities near you. Whether you love concerts, festivals, workshops, or sports, we bring all the best experiences to one place.</p>
+    
+    <h2>What We Do</h2>
+    <ul>
+      <li><strong>Find & Explore:</strong> Browse events based on your interests, location, and schedule.</li>
+      <li><strong>Easy Ticket Booking:</strong> Get tickets instantly with a seamless booking experience.</li>
+      <li><strong>For Organizers:</strong> List and manage your events effortlessly.</li>
+      <li><strong>Community Connection:</strong> Engage with a vibrant network of event-goers and organizers.</li>
+    </ul>
+
+    <h2>Why Choose TIXORA?</h2>
+    <ul>
+      <li>One-stop platform for discovering and booking events.</li>
+      <li>Secure and hassle-free ticketing process.</li>
+      <li>Personalized recommendations based on your preferences.</li>
+      <li>Dedicated support to ensure the best experience.</li>
+    </ul>
+
+    <h2>Join Us</h2>
+    <p>Whether you are looking for exciting events or want to promote your own, <strong>TIXORA</strong> is here to connect you with the best experiences. Start exploring today!</p>
+  </main>
+    
+
+    
+
+  
+    
+    
+  </main>
+
+
+
+  
+
+
+<!-- FOOTER SECTION -->
+<footer class="footer">
+
+  <!-- BOTTOM CALL-TO-ACTION now inside footer -->
+  <section class="cta-section">
+    <!-- Left side: icon + short text -->
+    <div class="cta-left">
+      <img src="images/calendar_check.png" alt="Calendar icon" class="cta-icon" />
+      <span class="cta-title" style="color: #989797; font-size: 17px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word" >List your show</span>
+    </div>
+
+    <!-- Middle: descriptive text -->
+    <div class="cta-middle" style="color: #989797; font-size: 16px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word" >
+      Got a show, event, activity or a great experience? Partner with us & get listed on Tixora
+    </div>
+
+    <!-- Right side: pink button -->
+    <button class="cta-button" onclick="window.open('contact.html', '_blank')">
+      Contact today!
+    </button>
+  </section>
+
+  <div class="footer-line">
+    <!-- Centered image over the line with a link -->
+    <a href="index.html">
+      <img class="footer-logo" src="images/footerlogo.png" alt="Footer Logo" />
+    </a>
+  </div>
+  
+  <div class="facebook">
+    <a href="https://www.facebook.com/" target="_blank">
+      <img src="images/facebook.png" alt="Facebook" />
+    </a>
+
+    <a href="https://www.twitter.com/" target="_blank">
+      <img src="images/twitter.png" alt="Twitter" />
+    </a>
+    <a
+      href="https://www.linkedin.com/"
+      target="_blank"
+    > <img src="images/linkedin.png" alt="Linkedin" />
+    </a>
+
+  <div style="color: #989797; font-size: 11px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word">
+    Copyright 2025 TIXORA. All rights reserved.
+  </div>
+</footer>
+
+<script src="index.js"></script>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is logged in by checking if a token exists in localStorage
+    const token = localStorage.getItem("token");
+    const loginToggle = document.getElementById("loginToggle");
+  
+    if(token) {
+      // If the token exists, update the login toggle to show the user icon
+      loginToggle.innerHTML = '<a href="user.html" class="toggle-segment"><img src="images/user_icon.png" alt="User Icon" class="user-icon"></a>';
+    }
+  });
+  </script>
+
+</body>
+</html>
