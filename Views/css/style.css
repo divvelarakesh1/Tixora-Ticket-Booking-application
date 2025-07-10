@@ -1,1 +1,2288 @@
+/* ---------------------------
+  This is the main CSS file for the Tixora project.
+  It contains all the styles for the project.
+----------------------------*/
 
+
+
+
+/* ---------------------------
+   GLOBAL STYLES
+----------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;                       /* Replace with your Figma font */
+  color: #333;
+  background-color: #efefef;
+}
+
+/* Utility classes */
+.btn {
+  background-color: #ff1493;                             /* Pink color from your design */
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #e01384;                              /* Slightly darker shade for hover */
+}
+
+/* Links */
+a {
+  color: #ff1493;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* ---------------------------
+  HOMEPAGE MAIN
+----------------------------*/
+
+.homepage-main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.intro-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.intro-section p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+
+
+
+/* ---------------------------
+   HEADER (HOMEPAGE)
+----------------------------*/
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #efefef;
+}
+
+.header-logo img {
+  max-height: 40px;                                         /* Adjust to fit your logo size */
+}
+
+.header-search input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-nav {                                               /* If you also want to center them in the header vertically, you can do: */
+  display: flex; 
+  align-items: center;
+}
+
+.nav-menu {
+  margin-left: 80px;
+  display: flex;                                          /* Horizontal layout for the nav links */
+  gap: 1rem;                                              /* Spacing between links (optional) */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;                                          /* Adjust color as desired */
+  font-weight: 500;                                       /* A bit of boldness, if you like */   /* padding can be adjusted as needed */
+}
+
+.brand-header {
+  text-align: center;
+  padding: 1rem;
+  background: #fff;                                     /* White bar at the top (optional) */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.brand-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff1493;                                       /* TIXORA pink */
+}
+
+
+
+
+/* 3. MAIN CONTAINER */
+.signup-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: calc(100vh - 68px);                            /* 100vh minus the header height (approx). Adjust as needed. */
+  margin-top: 1rem;                                          /* Gap below header */
+  gap: 2rem;                                                 /* Space between left collage & right form */
+  padding: 0 1rem;                                            /* Horizontal padding */
+}
+
+
+
+/* 4. LEFT COLUMN (OPTIONAL Collage) */
+.signup-images {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  background-color: transparent;                              /* or #f0f2f5 to match body */
+  padding: 1rem;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+/* 5. RIGHT COLUMN: SIGNUP CARD */
+.signup-form-container {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+/* The white box (card) for the form */
+.signup-card {
+  background-color: #fff;
+  width: 100%;
+  max-width: 400px;                                           /* control how wide the box is */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 9px rgba(0,0,0,0.2);
+}
+
+.signup-card h2 {
+  font-size: 3rem;
+  margin-left: 70px;
+  font-weight: 600;
+  font-family: 'Suez One', sans-serif;
+  color: #ff1493; 
+  margin-bottom: 0.5rem;
+}
+
+
+
+/* Form elements */
+.signup-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signup-card label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.signup-card input[type="text"],
+.signup-card input[type="number"],
+.signup-card input[type="email"],
+.signup-card input[type="password"] {
+  width: 100%;
+  padding: 0.7rem;
+  border: 2px solid #e1e1e1;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  
+}
+
+.signup-card input:focus {
+  border-color: #eaeaea;
+  outline: none;
+  box-shadow: 0 1px 1px rgba(146, 146, 146, 0.594);
+}
+
+
+
+
+/* Sign-up button */
+.signup-card .btn {
+  background-color: #ff1493;
+  color: #fff;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+.signup-card .btn:hover {
+  background-color: #ffffff; /* Slightly darker pink on hover */
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.24);
+  color: #ff1493;
+}
+
+
+
+
+
+/* "Already have an account?" text */
+.signup-card p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+.signup-card a {
+  color: #ff1493;
+  text-decoration: none;
+  font-weight: 500;
+}
+.signup-card a:hover {
+  text-decoration: underline;
+}
+
+/* 6. RESPONSIVE */
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column; /* stack the collage and form vertically */
+    align-items: center;
+  }
+  .signup-images {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .signup-form-container {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+/* ---------------------------
+   INTERACTIVE SEARCH BUTTON STYLES
+----------------------------*/
+.search-container {
+  position: relative;
+  width: 100% !important;
+  margin-left: 60px;
+  
+}
+
+.search-input {
+  width: 100% !important;
+  padding: 9px 300px 8px 45px !important;
+  font-size: 16px !important;
+  border: 1px solid #ccc;
+  border-radius: 9999px !important;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.24);                                      /* Added subtle shadow */
+}
+
+
+/* Make placeholder text smaller */
+.search-input::placeholder {
+  font-size: 14px;                                                                  /* Adjust as desired */
+  color: #999;                                                                   /* Slightly lighter color if you like */
+}
+
+.search-input:focus {
+  box-shadow: 0 0 10px #ff1493;
+}
+
+/* Search button now positioned on the left */
+.search-button {
+  position: absolute;
+  top: 50%;
+  left: 10px;                                                                       /* instead of right: 10px */
+  transform: translateY(-50%);
+  background: #ff1493;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;                                                                   /* For ripple effect */
+}
+
+.search-button:hover {
+  background: #acada8;
+}
+
+.search-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.search-icon {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+  transition: transform 0.3s ease;
+}
+
+.search-button:focus .search-icon {
+  transform: rotate(360deg);
+}
+
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+/******************************************************
+  LOGIN / SIGNUP TOGGLE BUTTON
+******************************************************/
+
+/* Container for both segments */
+.login-signup-toggle {
+  margin-left: 20px;
+  display: inline-flex;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24);
+}
+
+
+
+/* User Icon Styling */
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+
+.toggle-segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.5rem 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+
+
+/* Example default colors */
+.login-segment {
+  background-color: #ff1493;
+  color: #fff;
+}
+.signup-segment {
+  background-color: #ff1493;
+  color: #fff;
+}
+
+/* Hover states, etc. (customize as you like) */
+.login-signup-toggle:hover .toggle-segment {
+  background-color: #fff;
+  color: #ff1493;
+}
+
+
+/* On hover over a specific segment, highlight that segment in pink with white text */
+.toggle-segment:hover {
+  background-color: #fff !important;
+  color: #ff1493 !important;
+}
+
+
+/* Hambureger menu */
+.hamburger {
+  width: 26px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+  z-index: 1000; /* optional if needed */
+  transition: all 0.3s ease-in-out;
+  /* Remove:
+     position: fixed;
+     top: 20px;
+     right: 20px;
+  */
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3.5px;
+  background-color: #858585;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger :hover span {
+  background-color: #ff1493;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24);
+}
+
+/* Toggle state for cross effect (optional) */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(13px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+
+
+
+/* 1) Optional overlay behind the menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi‐transparent black */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  z-index: 999; /* just below the side menu */
+}
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 2) The off‐canvas side menu itself */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;                                       /* adjust as needed */
+  height: 100%;
+  background-color: #fff;                           /* panel background */
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transform: translateX(100%);                        /* hidden by default */
+  transition: transform 0.3s ease;
+  z-index: 1000;                                      /* above overlay */
+}
+
+/* When the menu is “open,” slide it in */
+.side-menu.open {
+  transform: translateX(0);
+}
+
+
+
+/* 3) Menu header styling */
+.side-menu-header {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+.side-menu-header h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+
+
+/* Example profile section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+
+
+
+/* 4) Links inside the menu */
+.side-menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+.side-menu-links a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+}
+.side-menu-links a:hover {
+  background-color: #f5f5f5;
+}
+
+
+.slideshow-container {
+  position: relative;
+  width: 1100px;                                        /* Adjust as needed */
+  height: 400px;                                        /* Adjust as needed */
+  margin: 2rem auto;                                    /* Center it */
+  overflow: hidden;                                     /* Hide anything outside the container */
+  background: #000;                                   /* A background so you see the container if images are smaller */
+}
+
+/* Each slide is absolutely placed on top of each other, hidden by default */
+.mySlides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;                                        /* Hide by default */
+  object-fit: cover;                                    /* Crop to fill the container; use "contain" if you prefer letterboxing */
+  opacity: 0;                                           /* Optional fade transition */
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* A visible slide will have display:block + opacity:1 (we’ll set these in JavaScript) */
+
+/* Left/Right arrow controls */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 3px;
+  text-decoration: none;                              /* If you prefer anchor tags for styling */
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/*********************************
+  Login Page styles
+**********************************/
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  width: 100%;
+  /* If you want to control spacing around the container: 
+     padding: 2rem 1rem; */
+}
+
+/* =======================
+   3. Left Column
+      - Branding / Tagline / Collage
+======================= */
+.login-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #efefef;
+  padding: 2rem;
+  /* Facebook left column is mostly text, but you can 
+     keep your collage or brand text here */
+}
+
+/* Example: If you want to replicate the “big brand text + tagline” style: */
+.brand-text {
+  margin-left: 90px;
+  font-family: 'Suez One', sans-serif;
+  font-size: 4.2rem;
+  font-weight: 700;
+  color: #ff1493; /* TIXORA Pink */
+  margin-bottom: 1rem;
+}
+
+.brand-subtitle {
+  font-size: 2.2rem;
+  color: #585858;
+}
+
+/* If you want the circle images to appear in a row or grid: */
+.login-images .circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.login-images .circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =======================
+   4. Right Column
+      - Card-like Login Form
+======================= */
+.login-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  
+}
+
+/* Card container for the form (mimicking Facebook’s white box) */
+.login-card {
+  background-color: #fff;
+  width: 350px;
+  padding: 1.5rem 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 16px rgba(103, 103, 103, 0.815);
+}
+
+/* Subheading / small instructions */
+.login-card p.subtitle {
+  font-size: 1rem;
+  color: #ff1493;
+  margin-bottom: 1rem;
+}
+
+/* Labels */
+.login-card label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+/* Inputs */
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1.6px solid #ddd;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  outline: none;
+  color: #333;
+}
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+  border-color: #d3d3d3;
+  box-shadow: 0 1.5px 3px rgba(147, 142, 142, 0.45);
+}
+
+/* Terms text (privacy policy & terms) */
+.login-card .terms-text {
+  font-size: 0.85rem;
+  color: #ff1493;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+/* Login Button */
+.login-card .btn {
+  width: 100%;
+  background-color: #ff1493; /* TIXORA Pink */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(88, 88, 88, 0.45);
+}
+.login-card .btn:hover {
+  background-color: #ffffff; /* Slightly darker pink on hover */
+  color: #ff1493;
+  box-shadow: #666;
+}
+
+/* =======================
+   5. Links / Extra Info
+======================= */
+.login-links {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+.login-links a {
+  color: #ff1493;
+  text-decoration: none;
+  font-weight: 500;
+}
+.login-links a:hover {
+  text-decoration: underline;
+}
+
+/* If you want “Forgot password?” or “Don’t have an account?” on the same line: */
+.account-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* Divider for “or” */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.divider .line {
+  flex: 1;
+  height: 1px;
+  background-color: #ddd;
+  margin: 0 0.5rem;
+}
+.divider span {
+  color: #666;
+  font-weight: 500;
+}
+
+/* Google Sign In row (if you decide to add it back) */
+.google-signin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #000;
+  cursor: pointer;
+}
+
+/* =======================
+   6. Responsive
+======================= */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .login-images {
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  .login-form {
+    padding: 1rem;
+  }
+  .login-card {
+    width: 100%;
+    max-width: 400px; /* keep it from stretching too wide */
+  }
+}
+
+
+.intro {
+  font-size: 18px;
+  color: #ff1493;
+  font-weight: bold;
+  
+  /* Forcefully remove any "button" styles: */
+  background: #efefef;
+  border: none !important;
+  box-shadow: 0 0.1px 0.1px rgba(165, 0, 0, 0.1);
+  padding: 10px !important;
+  border-radius: 0 !important;
+  display: inline; /* or block, whichever you prefer */
+  cursor: default; /* so it doesn't look clickable */
+}
+
+
+
+
+
+
+
+
+
+
+/*********************************
+  1. Container & Title
+**********************************/
+.Events {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;                                          /* center it with some vertical spacing */
+}
+
+.Events h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;                                         /* or left, depending on your design */
+}
+
+
+
+
+/*********************************
+  2. Scrollable Cards Container
+**********************************/
+.event-cards-container {
+  position: relative;                                         /* so we can absolutely position the arrows */
+  overflow: hidden;                                           /* hides any scrollbar if we want a custom arrow */
+}                                                             /* You can keep overflow visible or auto if you want a native scrollbar. */
+
+/* The horizontal scroll area */
+.event-cards {
+  display: flex;
+  gap: 1.5rem;                                                 /* space between cards */
+  overflow-x: auto;                                            /* enable horizontal scrolling */
+  scroll-behavior: smooth;                                     /* smooth scrolling when we use JS to scroll */
+  padding: 1rem 2rem;                                          /* optional padding around the cards */
+}
+
+
+
+
+/*********************************
+  3. Individual Event Card
+**********************************/
+.event-card {
+  flex: 0 0 auto;                                               /* prevents cards from shrinking, so they stay side by side */
+  width: 180px;                                                 /* fixed width for each card (adjust as needed) */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;                                           /* Add more styling as needed */
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.event-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.event-card p {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+
+
+
+/*********************************
+  4. Arrows (Prev / Next)
+**********************************/
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.scroll-arrow:hover {
+  background-color: rgba(136, 136, 136, 0.5);
+}
+
+/* Left arrow position */
+.left-arrow {
+  left: 0.5rem;
+}
+
+/* Right arrow position */
+.right-arrow {
+  right: 0.5rem;
+}
+
+
+
+/*********************************
+  5. Responsive Tweaks
+**********************************/
+@media (max-width: 768px) {
+  .event-card {
+    width: 140px; /* smaller card on mobile */
+  }
+  .scroll-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
+/* CTA Section Container */
+.cta-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #efefef;                            /* White background */
+  padding: 1rem 2rem;                                     /* Top/bottom & left/right spacing */
+  font-family: 'Suez One', sans-serif;
+
+}
+
+/* Left side: icon + short title */
+.cta-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;                                                  /* Space between icon and text */
+}
+
+.cta-icon {
+  width: 24px;                                              /* Adjust as needed */
+  height: auto;
+}
+
+.cta-title {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.62px;
+  color: #000;                                                    /* Black text */
+}
+
+/* Middle text */
+.cta-middle {
+  flex: 1;                                                        /* Fill remaining space */
+  margin: 0 2rem;                                                 /* Spacing around the middle text */
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1.62px;
+  color: #000;
+}
+
+/* Right side: pink button */
+.cta-button {
+  background-color: #ff1493;                                    /* Pink */
+  color: #ffffff;                                              /* White text */
+  border: none;
+  border-radius: 9999px;                                          /* Pill shape */
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.45);                  /* Subtle shadow underneath */
+}
+
+.cta-button:hover {
+  background-color: #ff149171;                                  /* Slightly darker on hover */
+  color: #aeaeae;                                               /* Pink text on hover */
+}
+
+
+
+
+
+
+
+/* ---------------------------
+  FOOTER STYLES
+  ------------------------------ */
+
+
+
+
+
+.footer {
+  background-color: #333338;                                  /* Dark background */
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+}
+
+/* Horizontal line across the footer */
+.footer-line {
+  border-top: 1px solid #666;                                   /* The line color & thickness */
+  margin-bottom: 1rem;
+  position: relative;                                             /* Needed for absolute positioning of the image */
+  height: 0;                                                       /* No extra height; line is effectively 1px */
+}
+
+/* Image that sits at the center of the line */
+.footer-logo {
+  position: absolute;
+  top: 50%;                                                           /* Center vertically */
+  left: 50%;                                                           /* Center horizontally */
+  transform: translate(-50%, -50%);                                   /* Move the image exactly to the middle */
+  background: #2f2f2f;                                                /* Same as footer background to “cut out” the line behind the image */
+  
+  /* Optional: define size if needed */
+  width: 60px;                                                             /* Example width */
+  height: auto;                                                             /* Preserve aspect ratio */
+}                                                                            /* padding: 0 0.5rem;  If you want some spacing around the image */
+
+/* Override CTA background and text color inside footer */
+.footer .cta-section {
+  background-color: #333338 !important; /* Matches footer color */
+  color: #fff !important;              /* Make text white */
+}
+
+
+
+
+
+
+
+
+/* ---------------------------
+   LOGIN / SIGNUP LAYOUT
+----------------------------*/
+.login-container,
+.signup-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left side images */
+.login-images,
+.signup-images {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right side form */
+.login-form,
+.signup-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 4rem;
+}
+
+.login-form h2,
+.signup-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ff1493;
+}
+
+.login-form form,
+.signup-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-links,
+.signup-form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+
+
+/* Common side menu styling for each button */
+.side-menu-links button {
+  background-color: #ffffff;
+  color: #ff1493;
+  border: 1px solid #ff1493;                                /* optional if you want a border */
+  border-radius: 16px;
+  padding: 0.6rem 1rem;                                       /* uniform padding */
+  margin: 8px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+.side-menu-links button:hover {
+  background-color: #ff1493;
+  color: #ffffff;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+
+
+/* If you still want separate blocks for each ID, ensure correct braces and padding syntax */
+#Home {
+  background-color: #ffffff;
+  color: #ff1493;
+  padding: 10px 20px;                                                   /* no commas */
+  margin: 5px;
+  border: #ff1493;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+#Home:hover {
+  background-color: #ff1493;
+  color: #ffffff;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+#Profile {
+  background-color: #ffffff;
+  color: #ff1493;
+  padding: 10px 20px;
+  margin: 5px;
+  border: #ff1493;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+#Profile:hover {
+  background-color: #ff1493;
+  color: #ffffff;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+#Sign-out {
+  background-color: #ffffff;
+  color: #ff1493;
+  padding: 10px 20px;                                                   /* fixed syntax */
+  margin: 5px;
+  border: #ff1493;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}                                                                      /* <-- Make sure this brace is here! */
+
+#Sign-out:hover {
+  background-color: #ff1493;
+  color: #ffffff;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+#YourTickets {
+  background-color: #ffffff;
+  color: #ff1493;
+  padding: 10px 20px;
+  margin: 5px;
+  border: #ff1493;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+#YourTickets:hover {
+  background-color: #ff1493;
+  color: #ffffff;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.24);
+}
+
+
+
+
+
+
+/* ========== HOST SECTION ========== */
+
+/* Container for the "What can you host?" details */
+.host-section {
+  max-width: 1200px;                                              /* limit width if you want */
+  margin: 2rem auto;                                              /* center horizontally, add top/bottom margin */
+  padding: 0 1rem;                                                  /* some horizontal padding */
+  text-align: center;                                               /* center the text by default */
+}
+
+.host-intro {
+  font-size: 1rem;
+  color: #555;                                                    /* example text color */
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* Grid of cards */
+.host-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;                                                       /* spacing between cards */
+  margin-bottom: 2rem;                                              /* space below the grid */
+}
+
+/* Each card */
+.host-card {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: box-shadow 0.2s;
+  cursor: pointer;                                                    /* if you want a pointer effect on hover */
+}
+
+.host-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Icon inside the card */
+.host-card img {
+  width: 60px;                                                            /* adjust icon size */
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+/* Title inside the card */
+.host-card h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+}
+
+/* "List your show" button */
+.list-show-btn {
+  background-color: #ff1493;                                                     /* TIXORA pink */
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.list-show-btn:hover {
+  background-color: #e01384; /* slightly darker pink */
+}
+
+
+/* Center the about-section in the page with a clean container style */
+.about-section {
+  max-width: 800px;                                                            /* Limit how wide the content gets */
+  margin: 2rem auto;                                                            /* Center horizontally and add vertical spacing */
+  background-color: #efefef;                                                 /* Optional white background */
+  padding: 2rem;                                                                /* Inner spacing */
+  border-radius: 8px;                                                         /* Slightly rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);                                 /* Subtle box shadow */
+  color: #333;                                                                /* Text color (override if needed) */
+}
+
+.about-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ff1493;                                                               /* Pink accent for the heading, adjust as you like */
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ff1493;                                                               /* Pink subheadings, adjust as needed */
+}
+
+.about-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: none;                                                            /* Removes the bullet dots */
+  padding-left: 0;                                                                  /* Optionally remove default padding */
+  margin-left: 0;                                                                       /* Optionally remove default margin */
+}
+
+
+.about-section li {
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
+
+
+
+/* ============================
+   USERPART: Global Resets & Base Styles
+=============================== */
+.userpart * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.userpart {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  color: #333;
+}
+
+/* ============================
+   USERPART: Header
+=============================== */
+.userpart .header {
+  background: #efefef;
+  color: #000000;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  
+}
+.userpart .header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-color: #fff;                                               /* placeholder background */
+}
+.userpart .header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+
+/* ============================
+   USERPART: Main Container
+=============================== */
+.userpart .container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* ============================
+   USERPART: Section Titles
+=============================== */
+.userpart .section-title {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* ============================
+   USERPART: Profile Data Display
+=============================== */
+.userpart .profile-data {
+  margin-bottom: 20px;
+}
+.userpart .data-item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.userpart .data-label {
+  width: 40%;
+  font-weight: bold;
+  color: #555;
+}
+.userpart .data-value {
+  width: 60%;
+  color: #333;
+}
+
+/* ============================
+   USERPART: Edit Button
+=============================== */
+.userpart .edit-button {
+  background: #ff1493;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.userpart .edit-button:hover {
+  background-color: #ff1491e3;
+  box-shadow: 0 2px 5px rgba(145, 144, 144, 0.89);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================
+   eventspart: RESET & BASE STYLES
+=============================== */
+.eventspart * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.eventspart {
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* ---------------------
+   Links & Lists
+--------------------- */
+.eventspart a {
+  text-decoration: none;
+  color: inherit;
+}
+.eventspart ul {
+  list-style: none;
+}
+
+
+
+/* ============================
+   eventspart: HEADER
+=============================== */
+.eventspart .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
+}
+.eventspart .header-logo img {
+  height: 40px;
+}
+
+/* Search container */
+.eventspart .header-search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 2rem;
+}
+.eventspart .search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+.eventspart .search-input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.eventspart .search-button {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.eventspart .search-icon {
+  width: 20px;
+  height: 20px;
+  fill: #888;
+}
+
+/* Header nav menu */
+.eventspart .header-nav {
+  margin-right: 2rem;
+}
+.eventspart .nav-menu {
+  display: flex;
+  gap: 1rem;
+}
+.eventspart .nav-link {
+  font-weight: 500;
+  color: #333;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+.eventspart .nav-link:hover {
+  background-color: #f2f2f2;
+}
+
+/* Login / Signup toggle */
+.eventspart .login-signup-toggle {
+  margin-right: 1rem;
+}
+.eventspart .toggle-segment {
+  padding: 0.5rem 1rem;
+  background-color: #ff1493;
+  color: #fff;
+  border-radius: 40px;
+  font-weight: 500;
+  box-shadow: #ff14919c 0 4px 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.eventspart .toggle-segment:hover {
+  background-color: #fff;
+  color: #ff1493;
+}
+
+/* Hamburger menu (mobile) */
+.eventspart .hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.eventspart .hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+/* Off‐Canvas Side Menu */
+.eventspart .menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.eventspart .menu-overlay.show {
+  display: block;
+  opacity: 1;
+}
+.eventspart .side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  z-index: 999;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.eventspart .side-menu.show {
+  right: 0;
+}
+.eventspart .side-menu-header {
+  margin-bottom: 1rem;
+}
+.eventspart .profile-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.eventspart .profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.eventspart .login-register-btn {
+  color: #ff1493;
+  font-weight: 500;
+}
+.eventspart .side-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.eventspart .side-menu-links a {
+  color: #333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* ============================
+   eventspart: HERO SECTION
+=============================== */
+.eventspart .hero {
+  background: #efefef;
+  color: #000;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.eventspart .hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.eventspart .hero-text {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================
+   eventspart: MAIN LAYOUT
+=============================== */
+.eventspart .main {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Filter panel */
+.eventspart .filter-panel {
+  flex: 0 0 250px;
+  background-color: #efefef;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+.eventspart .filter-panel h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+.eventspart .filter-group {
+  margin-bottom: 2rem;
+}
+.eventspart .filter-group button,
+.eventspart .filter-group input[type="button"] {
+  display: inline-block;
+  margin: 0.2rem 0.2rem 0.2rem 0;
+  padding: 0.5rem 1rem;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
+.eventspart .filter-group button:hover,
+.eventspart .filter-group input[type="button"]:hover {
+  background-color: #ececec;
+}
+.eventspart .filter-group label {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+.eventspart .filter-group input[type="date"] {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ============================
+   eventspart: EVENTS LIST
+=============================== */
+.eventspart .events-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 1rem;
+}
+.eventspart .event-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: 350px;
+  width: 250px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.eventspart .event-card:hover {
+  transform: translateY(-2px);
+}
+.eventspart .event-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.eventspart .event-content {
+  padding: 1rem;
+}
+.eventspart .event-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.eventspart .event-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+.eventspart .event-description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+.eventspart .event-cta {
+  margin-top: auto;
+  text-align: right;
+  padding: 0.5rem 1rem;
+}
+.eventspart .event-cta button {
+  background-color: #ff1493;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 42px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(123, 121, 121, 0.705);
+  transition: background-color 0.3s;
+}
+.eventspart .event-cta button:hover {
+  background-color: #ffffff;
+  color: #ff1493;
+  box-shadow: 0 2px 5px rgba(123, 121, 121, 0.705);
+}
+
+/* ============================
+   eventspart: MEDIA QUERIES
+=============================== */
+@media (max-width: 992px) {
+  .eventspart .header-search {
+    display: none;
+  }
+  .eventspart .nav-menu {
+    display: none;
+  }
+  .eventspart .hamburger {
+    display: flex;
+  }
+  .eventspart .main {
+    flex-direction: column;
+  }
+  .eventspart .filter-panel {
+    display: none;
+  }
+}
+
+
+
+
+/* ---------------------------
+  Event Details Styles
+--------------------------- */
+
+
+.event-details-wrapper {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-wrap: wrap; /* so it wraps on smaller screens */
+  gap: 1rem;
+}
+
+.event-image {
+  flex: 1 1 300px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-image img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.event-info {
+  flex: 2 1 400px;
+  padding: 1rem;
+}
+
+.event-info h1 {
+  font-size: 1.8rem;
+  color: #ff1493; /* TIXORA pink accent */
+  margin-bottom: 1rem;
+}
+
+.event-info p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+.event-info p strong {
+  color: #444;
+}
+
+/* Book Button at the bottom */
+.book-button-container {
+  text-align: center;
+  margin: 1rem 0;
+}
+.book-button {
+  background-color: #ff1493; /* TIXORA pink */
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+  font-weight: 500;
+}
+.book-button:hover {
+  box-shadow: 0 0 10px rgba(255, 63, 108, 0.4);
+}
+
+
+
+
+
+/* ---------------------------
+  Book Event Styles
+-------------------------------*/
+
+
+
+.book-main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #efefef;                                              /* or whatever background you want */
+}
+
+.event-banner {
+  margin-bottom: 1rem;
+}
+
+.event-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px; /* optional */
+}
+
+.event-details {
+  margin-bottom: 1rem;
+}
+
+.event-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-meta {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.ticket-tiers {
+  margin-bottom: 2rem;
+}
+
+.ticket-tiers h3 {
+  margin-bottom: 0.5rem;
+}
+
+.tier-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* So they wrap on smaller screens */
+}
+
+.tier-option {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.book-button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.book-button {
+  background: #ff0080;   /* Your brand color */
+  color: #fff;
+  border: none;
+  border-radius: 9999px; /* pill shape */
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+  
+}
+
+.book-button:hover {
+  box-shadow: 0 3px 5px rgba(123, 122, 122, 0.82);
+  background-color: #fff;
+  color: #ff1493;
+}
+
+
+
+
+
+
+
+/* ---------------------------
+  Transaction Confirmation Styles
+-------------------------------*/
+
+.transaction-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #efefef;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Title at the top, centered */
+.booking-title {
+  font-size: 1.8rem;
+  color: #ff1493; /* TIXORA pink accent */
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Flex row for image & details */
+.booking-layout {
+  display: flex;
+  align-items: center;                                          /* vertically center image + text */
+  gap: 2rem;                                                    /* space between image and details */
+  background-color: #fff;                                         /* optional white background */
+  padding: 2rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Image on the left */
+.booking-confirmation-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 1px;
+  overflow: hidden;
+  flex-shrink: 0;                                                       /* keep image from shrinking */
+}
+.booking-confirmation-image img {
+  width: 100%;
+  height: 100%;
+  margin-top: 0px ;                                                       /* optional negative margin to center */
+  object-fit: cover;                                                       /* or contain, depending on your image */
+}
+
+/* Details on the right */
+.booking-details {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-left: 400px;
+  margin-top: -80px;
+  color: #333;
+}
+.booking-details p {
+  margin: 0.5rem 0;
+}
+.booking-details strong {
+  color: #444;
+}
+
+/* Button at the bottom, centered */
+.booking-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+.action-button {
+  background-color: #ff1493;                                                    /* TIXORA pink */
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(123, 121, 121, 0.705);
+}
+.action-button:hover {
+  background-color: #fff;
+  color: #ff1493;
+  box-shadow: 0 2px 5px rgba(123, 121, 121, 0.705);
+}
+
+
+
+
+
+
+
+/* ---------------------------
+  Your Tickets Styles
+-------------------------------*/
+
+/* --------------------- HERO SECTION --------------------- */
+.hero {
+  background: #e8e8e8;
+  color: #000;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-text {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --------------------- MAIN LAYOUT --------------------- */
+.main {
+  display: flex;                                          /* ensures aside is on the left and tickets on the right */
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --------------------- FILTER PANEL (CATEGORIES) --------------------- */
+.filter-panel {
+  flex: 0 0 250px;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+.filter-panel h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+.filter-group {
+  margin-bottom: 2rem;
+}
+.filter-group button {
+  display: inline-block;
+  margin: 0.2rem 0.2rem 0.2rem 0;
+  padding: 0.5rem 1rem;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
+.filter-group button:hover {
+  background-color: #ececec;
+}
+
+/* --------------------- TICKETS LIST --------------------- */
+.tickets-list {
+  flex: 1; /* take remaining space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.ticket-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+}
+.ticket-card:hover {
+  transform: translateY(-2px);
+}
+.ticket-info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.ticket-info p {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #666;
+}
+.ticket-cta {
+  margin-top: auto;
+  text-align: right;
+}
+.ticket-cta button {
+  background-color: #ff1493;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(123, 121, 121, 0.705);
+}
+.ticket-cta button:hover {
+  background-color: #fff;
+  color: #ff1493;
+  box-shadow: 0 2px 5px rgba(123, 121, 121, 0.705);
+}
+
+/* --------------------- MEDIA QUERIES --------------------- */
+@media (max-width: 992px) {
+  .header-search {
+    display: none;
+  }
+  .nav-menu {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .main {
+    flex-direction: column;
+  }
+  .filter-panel {
+    display: none; /* Hide the filter panel on smaller screens or make collapsible if desired */
+  }
+}
