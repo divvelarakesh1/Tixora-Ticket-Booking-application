@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile Page</title>
+    <style>
+        /* Basic reset and page styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Header section */
+        .header {
+            background: linear-gradient(to right, #ff1493, #8f0967);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #fff;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        /* Container for profile sections */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Section titles */
+        .section-title {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* Profile data display */
+        .profile-data {
+            margin-bottom: 20px;
+        }
+
+        .data-item {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-label {
+            width: 40%;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .data-value {
+            width: 60%;
+            color: #333;
+        }
+
+        /* Edit button */
+        .edit-button {
+            background: #ff1493;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .edit-button:hover {
+            background-color: #ff1491e3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <img src="user1.png" alt="Profile">
+        <h1 id="user">Hi, </h1>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Account Details -->
+        <h2 class="section-title">Account Details</h2>
+        <div class="profile-data">
+            <div class="data-item">
+                <div class="data-label">Email Address:</div>
+                <div class="data-value" id="email"></div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Mobile Number:</div>
+                <div class="data-value" id="mobile"></div>
+            </div>
+        </div>
+
+        <!-- Personal Details -->
+        <h2 class="section-title">Personal Details</h2>
+        <div class="profile-data">
+            <div class="data-item">
+                <div class="data-label">First Name:</div>
+                <div class="data-value" id="name"></div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">Age:</div>
+                <div class="data-value" id="age"></div>
+            </div>
+        </div>
+
+        <!-- Edit button -->
+        <button class="edit-button" onclick="editProfile()">Edit Profile</button>
+    </div>
+
+    <!-- Simple JavaScript to handle edit button -->
+    <script>
+        document.addEventListener("DOMContentLoaded",  async function () {
+            const token = await localStorage.getItem("token");
+            const payload = JSON.parse(atob(token.split(".")[1]));
+            fetch('/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: payload.name })
+            })
+                .then(r => r.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById("email").textContent = data.EMAIL_ID;
+                    document.getElementById("mobile").textContent = data.PHONE_NUMBER;
+                    document.getElementById("age").textContent = data.AGE;
+                    document.getElementById("name").textContent = data.NAME;
+                    document.getElementById("user").textContent = "Hi, " + data.USERNAME;
+                })
+        })
+    </script>
+</body>
+
+</html>

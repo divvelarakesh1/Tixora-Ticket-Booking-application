@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TIXORA - Login</title>
+  <link rel="icon" href="images/Mainlogo.png" type="image/png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+
+
+<body>
+  <main class="login-container">
+
+    <!-- LEFT COLUMN: Branding / Tagline / or Collage -->
+    <div class="login-images">
+      <!-- Option A: Big brand text -->
+      <div class="brand-text">TIXORA</div>
+      <div class="brand-subtitle">Unleash the Magic of Events</div>      
+    </div>
+
+    <!-- RIGHT COLUMN: Login Form -->
+    <div class="login-form">
+      <div class="login-card">
+        <form id="login">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Username" />
+
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Password" />
+
+          <button type="submit" class="btn">Log In</button>
+        </form>
+
+        <p id="message"></p>
+
+        <div class="login-links">
+          <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const login_form = document.getElementById("login");
+       
+        login_form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const data={
+            username:document.getElementById('username').value,
+            password:document.getElementById('password').value
+             }
+             console.log("form submitted");
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        
+        .then(response=>response.json())
+        .then(data => {
+            document.getElementById("message").textContent = data.message;
+            if(data.message==="succesfully logged in"){    
+            setTimeout(() => {
+              window.location.href = "./index.html"; 
+            }, 2000);}
+            else{
+
+            }
+            if(data.token){
+              localStorage.setItem("token", data.token); 
+            }
+          })
+        .catch(error => console.error('Error:', error));
+        })
+    })
+</script>
+</body>
+</html>

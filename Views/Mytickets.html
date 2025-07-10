@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="TIXORA is a platform to discover shows, events, and activities around you." />
+    <link rel="icon" href="images/Mainlogo.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIXORA - My Tickets</title>
+
+    <!-- Inline CSS -->
+    <style>
+        /* --------------------- RESET / BASE --------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --------------------- HEADER --------------------- */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-logo img {
+            height: 40px;
+        }
+
+        /* Search container */
+        .header-search {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin: 0 2rem;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-button {
+            position: absolute;
+            top: 50%;
+            right: 0.5rem;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            fill: #888;
+        }
+
+        /* Header nav menu */
+        .header-nav {
+            margin-right: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #333;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* Login / Signup */
+        .login-signup-toggle {
+            margin-right: 1rem;
+        }
+
+        .toggle-segment {
+            padding: 0.5rem 1rem;
+            background-color: #ff1493;
+            color: #fff;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: #ff14919c 0 4px 5px;
+        }
+
+        .toggle-segment:hover {
+            background-color: #fff;
+            color: #ff1493;
+        }
+
+        /* Hamburger menu (mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            border-radius: 2px;
+        }
+
+        /* Off‐Canvas Side Menu */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .side-menu.show {
+            right: 0;
+        }
+
+        .side-menu-header {
+            margin-bottom: 1rem;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .login-register-btn {
+            color: #ff3f6c;
+            font-weight: 500;
+        }
+
+        .side-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .side-menu-links a {
+            color: #333;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        /* --------------------- PAGE HEADING --------------------- */
+        .page-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #333;
+            text-align: center;
+            padding-top: 1.5rem;
+        }
+
+        /* --------------------- MAIN LAYOUT --------------------- */
+        .main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Tickets listing */
+        .tickets-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .ticket-card {
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ticket-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .ticket-header {
+            background-color: #ff1493;
+            color: white;
+            padding: 0.8rem;
+            font-weight: bold;
+        }
+
+        .ticket-content {
+            padding: 1rem;
+        }
+
+        .ticket-id {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .ticket-event {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+
+        .ticket-detail {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ticket-detail span:first-child {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .ticket-actions {
+            margin-top: auto;
+            padding: 0.8rem;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #eee;
+        }
+
+        .cancel-btn {
+            background-color: #ff3f6c;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .cancel-btn:hover {
+            background-color: #e60039;
+        }
+
+        /* --------------------- MEDIA QUERIES --------------------- */
+        @media (max-width: 992px) {
+            .header-search {
+                display: none;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tickets-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <!-- Logo -->
+        <div class="header-logo">
+            <a href="index.html">
+                <img src="images/TicketLogo.png" alt="TIXORA Logo" />
+            </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="header-search">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search your tickets..." id="searchInput">
+                <button class="search-button" id="searchButton" aria-label="Search">
+                    <svg class="search-icon" viewBox="0 0 512 512">
+                        <path
+                            d="M505 442.7l-99.7-99.7c28.4-34.9 45.7-79 45.7-127.4C451 96.5 354.5 0 231 0S11 96.5 11 216.6 107.5 433 231 433c48.4 0 92.5-17.3 127.4-45.7l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l22.3-22.3c9.3-9.4 9.3-24.6-.1-34zM231 384c-92.6 0-168-75.4-168-168S138.4 48 231 48s168 75.4 168 168-75.4 168-168 168z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="header-nav">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Login/Signup -->
+        <div class="login-signup-toggle">
+            <a href="profile.html" class="toggle-segment">My Account</a>
+        </div>
+
+        <!-- Hamburger (mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Overlay -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Off‐Canvas Side Menu -->
+        <div class="side-menu" id="sideMenu">
+            <div class="side-menu-header">
+                <h2>Welcome!</h2>
+                <div class="profile-section">
+                    <img src="images/user1.png" alt="User" class="profile-icon" />
+                    <div>
+                        <span id="username">User123</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="side-menu-links">
+                <a href="profile.html">My Profile</a>
+                <a href="my-tickets.html">My Tickets</a>
+                <a href="settings.html">Settings</a>
+                <a href="logout.html">Sign Out</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HEADING -->
+    <h1 class="page-heading">My Tickets</h1>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <!-- TICKETS LIST -->
+        <section class="tickets-list" id="ticketsList">
+            <!-- Sample Ticket Cards - These would be dynamically generated from your database -->
+           
+
+
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username= urlParams.get('id');
+            console.log(username);
+            document.getElementById('hamburger').addEventListener('click', function () {
+                document.getElementById('sideMenu').classList.add('show');
+                document.getElementById('menuOverlay').classList.add('show');
+            });
+
+            document.getElementById('menuOverlay').addEventListener('click', function () {
+                document.getElementById('sideMenu').classList.remove('show');
+                document.getElementById('menuOverlay').classList.remove('show');
+            });
+            const section=document.querySelector('.tickets-list');
+            fetch(`/Mytickets/${username}`)
+                .then(res => res.json())
+                .then(data => {
+                    
+                    for (let i = 0; i < data.length; i++) {
+                        if(data[i].STATUS=='1'){
+                        const ticket_container = document.createElement('div');
+                        ticket_container.className = 'ticket-card';
+                        const ticket_header = document.createElement('div');
+                        ticket_header.className = 'ticket-header';
+                        ticket_header.textContent = 'Booking #' + data[i].BOOKING_ID;
+
+                        const ticket_content = document.createElement('div');
+                        ticket_content.className = 'ticket-content';
+
+                        const ticket_name = document.createElement('div');
+                        ticket_name.className = 'ticket-event';
+                        ticket_name.textContent = 'EVENT NAME: '+data[i].EVENT_NAME;
+
+                        const booking_id_detail = document.createElement('div');
+                        booking_id_detail.className = 'ticket-detail';
+
+                        booking_id_detail.textContent = 'BOOKING ID:               ' + data[i].BOOKING_ID;
+
+                        const ticket_details = document.createElement('div');
+                        ticket_details.className = 'ticket_detail';
+                        ticket_details.textContent = 'TICKETS:    ' + data[i].TICKET_COUNT + '×' + data[i].CLASS_NAME;
+
+
+                        const Amount = document.createElement('div');
+                        Amount.className = 'ticket_detail';
+                        Amount.textContent = 'TOTAL VALUE:   ' + data[i].TICKETS_VALUE;
+
+
+                        const date_and_time = document.createElement('div');
+                        date_and_time.className = 'ticket-detail';
+                        date_and_time.textContent = 'DATE AND TIME:      '+ new Date(data[i].DATE_AND_TIME).toLocaleString('en-IN', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        const cancel_btn = document.createElement('button');
+                        cancel_btn.className = 'ticket-actions';
+                        cancel_btn.textContent = 'Cancel Booking';
+                        cancel_btn.dataset.bookingId = data[i].BOOKING_ID;
+
+                    
+                        ticket_content.appendChild(booking_id_detail);
+                        ticket_content.appendChild(ticket_name);
+                        ticket_content.appendChild(ticket_details);
+                        ticket_content.appendChild(Amount);
+                        ticket_content.appendChild(date_and_time);
+                        ticket_container.appendChild(ticket_header);
+                        ticket_container.appendChild(ticket_content);
+                        ticket_container.appendChild(cancel_btn);
+                        cancel_btn.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            const bookingId = this.dataset.bookingId;
+                            if (confirm(`Are you sure you want to cancel booking ${bookingId}?`)) {
+                                fetch('/cancel', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({bookingId})
+                                })
+                                ticket_container.remove();
+                            }
+                        })
+                        section.appendChild(ticket_container);
+                    }
+                }
+        });
+        });
+    </script>
+</body>
+
+</html>

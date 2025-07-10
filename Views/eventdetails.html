@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="TIXORA is a platform to discover shows, events, and activities around you." />
+  <link rel="icon" href="images/Mainlogo.png" type="image/png" />        <!-- Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TIXORA EventDetailspage</title>
+  <link rel="stylesheet" href="css/style.css" />                        <!-- Link to external CSS -->
+
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">                                               <!-- HEADER SECTION -->
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/TicketLogo.png" alt="TIXORA Logo" />           <!-- Logo -->
+      </a>
+    </div>
+
+    <div class="header-search">                                         <!-- Interactive Search Component -->
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search anything..." id="searchInput">
+        <button class="search-button" id="searchButton" aria-label="Search">
+          <svg class="search-icon" viewBox="0 0 512 512">
+            <path d="M505 442.7l-99.7-99.7c28.4-34.9 45.7-79 45.7-127.4C451 96.5 354.5 0 231 0S11 96.5 11 216.6 107.5 433 231 433c48.4 0 92.5-17.3 127.4-45.7l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l22.3-22.3c9.3-9.4 9.3-24.6-.1-34zM231 384c-92.6 0-168-75.4-168-168S138.4 48 231 48s168 75.4 168 168-75.4 168-168 168z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="header-nav">
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link" >Home</a>                    <!-- Navigation Links -->
+        <a href="about.html" class="nav-link" target="_blank" >About</a>                   <!-- Navigation Links -->
+        <a href="contact.html" class="nav-link" target="_blank">Contact</a>               <!-- Navigation Links -->
+      </nav>  
+    </div>
+
+    <div class="login-signup-toggle" id="loginToggle">
+      <a href="login.html" class="toggle-segment login-segment">Sign In</a>
+    </div>
+
+    
+    
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+<!-- The Overlay (optional, if you want to dim the background) -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- The Off‐Canvas Side Menu -->
+<div class="side-menu" id="sideMenu">
+  <!-- Header portion (profile, login/register button, etc.) -->
+  <div class="side-menu-header">
+    <div class="profile-section">
+      <h2 id="hey">Hey!</h2>
+      <a href="login.html" class="login-register-btn" id="login_btn1">Login / Register</a>
+    </div>
+  </div>
+
+  <!-- Navigation / links portion -->
+  <nav class="side-menu-links">
+    <button id="Home">Home</button>
+    <button id="Profile">Profile</button>
+    <button id="YourTickets" onclick="window.location.href='yourtickets.html'">Your Tickets</button>
+    <button id="Sign-out">Sign-out</button>
+  </nav>
+</div>
+
+
+
+    
+  </header>
+
+
+  
+
+  <main>
+    <div class="event-details-wrapper">
+
+      <!-- Left: Event Image -->
+      <div class="event-image">
+        <!-- Replace with your actual event image path -->
+        <img alt="Event Image" id="image" />
+      </div>
+
+      <!-- Right: Event Info -->
+      <div class="event-info">
+        <h1 id="eventName">Pottery Workshop</h1>
+
+        <p>
+          <strong>Event Type:</strong>
+          <span id="eventType"></span>
+        </p>
+        <p>
+          <strong>Date & Time:</strong>
+          <span id="eventDateTime"></span>
+        </p>
+        <p>
+          <strong>Total no of seats:</strong>
+          <span id="seats"></span>
+        </p>
+        <p>
+          <strong>Location</strong>
+          <span id="location"></span>
+        </p>
+        <p>
+          <strong>Venue:</strong>
+          <span id="venue"></span>
+        </p>
+        <p style="margin-top: 1rem;">
+          <strong>Description:</strong><br>
+          Join us for a fun and interactive pottery workshop. Learn hand‐building
+          techniques and work on a pottery wheel. Suitable for all skill levels.
+        </p>
+      </div>
+    </div>
+
+    <!-- Book Button at the bottom -->
+    <div class="book-button-container">
+      <button class="book-button" id="bookNowButton">Book Now</button>
+    </div>
+    <p id="message"></p>
+  </main>
+
+
+
+ 
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const eventId = urlParams.get('id');
+   //   const eventType = document.getElementById('eventType');
+      fetch(`/event/${eventId}`)
+        .then(res => res.json())
+        .then(data => {
+          const eventName = document.getElementById('eventName');
+          const eventType = document.getElementById('eventType');
+          const dt = document.getElementById('eventDateTime');
+          const loc = document.getElementById('location');
+          const venue = document.getElementById('venue');
+          const imag=document.getElementById('image');
+          const seat=document.getElementById('seats');
+         console.log(data.EVENT_TYPE);
+         console.log(data);
+          imag.src=`images/${data.EVENT_TYPE}.png`;
+          eventName.textContent = data.EVENT_NAME;
+          eventType.textContent = data.EVENT_TYPE;
+          seat.textContent=data.capacity;
+          dt.textContent = data.DATE_AND_TIME;
+          loc.textContent = data.LOCATION;
+          venue.textContent = data.venue_name;
+        });
+  
+      const book_but = document.getElementById("bookNowButton");
+      book_but.addEventListener('click', function (event) {
+        event.preventDefault();
+        const token = localStorage.getItem("token");
+        if (token) {
+          window.location.href = `book.html?id=${eventId}&eventtype=${eventType.textContent}`;
+        }
+        else {
+          //const message = document.getElementById("message");
+          window.alert("Login to book for the event");
+        }
+      });
+      searchButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (searchInput.value.trim() !== '') {
+            const input = { eventname: document.getElementById("searchInput").value };
+            fetch('/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(input)
+
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                console.log(data.Event_ID);
+                window.location.href = `eventdetails.html?id=${data.Event_ID}`;
+            });
+       
+        } else {
+            searchInput.focus();
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+    })
+  </script>
+
+
+
+
+<!-- FOOTER SECTION -->
+<footer class="footer">
+
+    <!-- BOTTOM CALL-TO-ACTION now inside footer -->
+    <section class="cta-section">
+      <!-- Left side: icon + short text -->
+      <div class="cta-left">
+        <img src="images/calendar_check.png" alt="Calendar icon" class="cta-icon" />
+        <span class="cta-title" style="color: #989797; font-size: 17px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word" >List your show</span>
+      </div>
+  
+      <!-- Middle: descriptive text -->
+      <div class="cta-middle" style="color: #989797; font-size: 16px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word" >
+        Got a show, event, activity or a great experience? Partner with us & get listed on Tixora
+      </div>
+  
+      <!-- Right side: pink button -->
+      <button class="cta-button" onclick="window.open('contact.html', '_blank')">
+        Contact today!
+      </button>
+    </section>
+  
+    <div class="footer-line">
+      <!-- Centered image over the line with a link -->
+      <a href="index.html">
+        <img class="footer-logo" src="images/footerlogo.png" alt="Footer Logo" />
+      </a>
+    </div>
+    
+    <div class="facebook">
+      <a href="https://www.facebook.com/" target="_blank">
+        <img src="images/facebook.png" alt="Facebook" />
+      </a>
+  
+      <a href="https://www.twitter.com/" target="_blank">
+        <img src="images/twitter.png" alt="Twitter" />
+      </a>
+      <a
+        href="https://www.linkedin.com/"
+        target="_blank"
+      > <img src="images/linkedin.png" alt="Linkedin" />
+      </a>
+  
+    <div style="color: #989797; font-size: 11px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word">
+      Copyright 2025 TIXORA. All rights reserved.
+    </div>
+  </footer>
+  
+  <script src="index.js"></script>
+
+
+</body>
+</html>

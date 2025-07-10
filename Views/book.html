@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--  -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="TIXORA is a platform to discover shows, events, and activities around you." />
+  <title>TIXORA bookingpage</title>
+  <link rel="icon" href="images/Mainlogo.png" type="image/png" /> <!-- Favicon -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Suez+One&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@500&family=SF+Pro+Text:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<style>
+  .ticket-quantity {
+    margin-bottom: 1.5rem;
+  }
+
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .quantity-selector input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .book-main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: #fff;
+    /* or whatever background you want */
+  }
+
+  .event-banner {
+    margin-bottom: 1rem;
+  }
+
+  .event-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    /* optional */
+  }
+
+  .event-details {
+    margin-bottom: 1rem;
+  }
+
+  .event-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-meta {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .ticket-tiers {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+  }
+
+  .tier-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .tier-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .tier-option:hover {
+    border-color: #999;
+    background-color: #f9f9f9;
+  }
+
+  .tier-option input {
+    margin-right: 10px;
+  }
+
+  .tier-option span {
+    font-weight: bold;
+  }
+
+  .seats-available {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .low-seats {
+    color: #d9534f;
+    font-weight: bold;
+  }
+
+  .tier-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-button-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .book-button {
+    background: #ff0080;
+    /* Your brand color */
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    /* pill shape */
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .book-button:hover {
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.4);
+  }
+</style>
+
+<body>
+
+
+  <header class="header"> <!-- HEADER SECTION -->
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/TicketLogo.png" alt="TIXORA Logo" /> <!-- Logo -->
+      </a>
+    </div>
+
+    <div class="header-search"> <!-- Interactive Search Component -->
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search anything..." id="searchInput">
+        <button class="search-button" id="searchButton" aria-label="Search">
+          <svg class="search-icon" viewBox="0 0 512 512">
+            <path
+              d="M505 442.7l-99.7-99.7c28.4-34.9 45.7-79 45.7-127.4C451 96.5 354.5 0 231 0S11 96.5 11 216.6 107.5 433 231 433c48.4 0 92.5-17.3 127.4-45.7l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l22.3-22.3c9.3-9.4 9.3-24.6-.1-34zM231 384c-92.6 0-168-75.4-168-168S138.4 48 231 48s168 75.4 168 168-75.4 168-168 168z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="header-nav">
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a> <!-- Navigation Links -->
+        <a href="about.html" class="nav-link" target="_blank">About</a> <!-- Navigation Links -->
+        <a href="contact.html" class="nav-link" target="_blank">Contact</a> <!-- Navigation Links -->
+      </nav>
+    </div>
+
+    <div class="login-signup-toggle">
+      <a href="login.html" class="toggle-segment login-segment">Login</a> <!-- Left segment: “Login” -->
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- The Overlay (optional, if you want to dim the background) -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- The Off‐Canvas Side Menu -->
+    <div class="side-menu" id="sideMenu">
+      <!-- Header portion (profile, login/register button, etc.) -->
+      <div class="side-menu-header">
+        <h2>Hey!</h2>
+        <div class="profile-section">
+          <!-- Example icon or user avatar -->
+          <img src="user1.png" alt="Special Offer" class="profile-icon" />
+          <div>
+            <a href="login.html" class="login-register-btn">Login / Register</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation / links portion -->
+      <nav class="side-menu-links">
+        <a href="user.html">Settings</a>
+        <a href="login.html">Sign Out</a>
+      </nav>
+    </div>
+
+
+  </header>
+
+  <main class="book-main-content">
+    <!-- Event Banner / Image -->
+    <div class="event-banner">
+      <!-- Replace with your actual image path & alt text -->
+      <img  alt="Pottery Workshop Banner" class="event-image" id="image" />
+    </div>
+
+    <!-- Event Details -->
+    <div class="event-details">
+      <h2 class="event-title" id="eventname">India Teens Fashion League Auditions</h2>
+
+    </div>
+
+    <!-- Ticket Tiers -->
+    <div class="ticket-tiers">
+      <h3>Choose Your Ticket Tier</h3>
+      <div class="tier-options">
+        <!-- Silver
+        <label class="tier-option">
+          <input type="radio" name="ticketTier" value="silver" checked />
+          <span>Silver - ₹500</span>
+        </label>
+
+        Gold
+        <label class="tier-option">
+          <input type="radio" name="ticketTier" value="gold" />
+          <span>Gold - ₹800</span>
+        </label>
+
+        Platinum
+        <label class="tier-option">
+          <input type="radio" name="ticketTier" value="platinum" />
+          <span>Platinum - ₹1200</span>
+        </label> -->
+      </div>
+    </div>
+    <div class="ticket-quantity">
+      <h3>Number of Tickets</h3>
+      <div class="quantity-selector">
+        <label for="ticketNum">Enter quantity:</label>
+        <input id="ticketNum" type="text" name="ticketNum" min="1" max="10" value="1" />
+      </div>
+    </div>
+    <!-- Book Button -->
+    <!-- Link or onclick can lead to your transaction page -->
+    <div class="book-button-container">
+      <button class="book-button">
+        Book
+      </button>
+    </div>
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <footer class="footer">
+
+    <!-- BOTTOM CALL-TO-ACTION now inside footer -->
+    <section class="cta-section">
+      <!-- Left side: icon + short text -->
+      <div class="cta-left">
+        <img src="images/calendar_check.png" alt="Calendar icon" class="cta-icon" />
+        <span class="cta-title"
+          style="color: #989797; font-size: 17px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word">List
+          your show</span>
+      </div>
+
+      <!-- Middle: descriptive text -->
+      <div class="cta-middle"
+        style="color: #989797; font-size: 16px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word">
+        Got a show, event, activity or a great experience? Partner with us & get listed on Tixora
+      </div>
+
+      <!-- Right side: pink button -->
+      <button class="cta-button" onclick="window.open('contact.html', '_blank')">
+        Contact today!
+      </button>
+    </section>
+
+    <div class="footer-line">
+      <!-- Centered image over the line with a link -->
+      <a href="index.html">
+        <img class="footer-logo" src="images/footerlogo.png" alt="Footer Logo" />
+      </a>
+    </div>
+
+    <div class="facebook">
+      <a href="https://www.facebook.com/" target="_blank">
+        <img src="images/facebook.png" alt="Facebook" />
+      </a>
+
+      <a href="https://www.twitter.com/" target="_blank">
+        <img src="images/twitter.png" alt="Twitter" />
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank"> <img src="images/linkedin.png" alt="Linkedin" />
+      </a>
+
+      <div
+        style="color: #989797; font-size: 11px; font-family: Suez One; font-weight: 400; letter-spacing: 0.99px; word-wrap: break-word">
+        Copyright 2025 TIXORA. All rights reserved.
+      </div>
+  </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const eventId = urlParams.get('id');
+      const eventtype=urlParams.get('eventtype');
+      const imag=document.getElementById('image');
+      console.log()
+      image.src=`images/${eventtype}.png`;
+      const book_button = document.querySelector('.book-button');
+      const token = localStorage.getItem("token");
+    
+      fetch(`/bookingdetails/${eventId}`)// It gets the class info for the event 
+        .then(res => res.json())
+        .then(data => {
+          const tier = document.querySelector('.tier-options');
+          for (let i = 0; i < data.length; i++) {
+            const label = document.createElement('label');
+            label.className = 'tier-option';
+
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = 'ticketTier';
+            input.value = data[i].CLASS_ID;
+
+            // Create a div to contain both the tier name/price and seats available
+            const tierDetails = document.createElement('div');
+            tierDetails.className = 'tier-details';
+
+            // Create span for tier name and price
+            const spann = document.createElement('span');
+            spann.textContent = data[i].CLASS_NAME + ' - ₹' + data[i].COST;
+
+            // Create span for seats available
+            const seatsSpan = document.createElement('span');
+            seatsSpan.className = 'seats-available';
+
+            // Check if seats are low and add special styling
+           
+              seatsSpan.textContent = data[i].TOTAL_SEATS_AVAILABLE+ ' seats available';
+            
+
+            // Append all elements in the right hierarchy
+            tierDetails.appendChild(spann);
+            tierDetails.appendChild(seatsSpan);
+            label.appendChild(input);
+            label.appendChild(tierDetails);
+            tier.appendChild(label);
+
+            // Add event listener
+            label.addEventListener('click', function () {
+              input.checked = true;
+            });
+          }
+        })
+
+      book_button.addEventListener('click', function (event) {
+        if (token) {
+
+
+
+          event.preventDefault();
+          const tier = document.querySelector('input[name="ticketTier"]:checked').value;
+          console.log(token);
+          const username = JSON.parse(atob(token.split(".")[1])).name;
+          console.log(username);
+          const radios = document.querySelectorAll('input[name="ticketTier"]');
+          const checkedRadio = Array.from(radios).find(radio => radio.checked);
+          const data = {
+            uname: username,
+            evenId: eventId,
+            ticket_count: document.getElementById('ticketNum').value,
+            class_id: checkedRadio.value
+          }
+          const selectedLabel = checkedRadio.closest('label');
+    const seatsAvailableText = selectedLabel.querySelector('.seats-available').textContent;
+    const availableSeats = parseInt(seatsAvailableText.match(/\d+/)[0]);
+    if(parseInt(data.ticket_count) > 0 && parseInt(data.ticket_count) <= availableSeats){
+      console.log(data);
+          fetch('/book', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+            .then(res => res.json())
+            .then(data => {
+              const booking_id = data.booking;
+              window.location.href = `transaction.html?id=${tier}&transaction_id=${booking_id}`;
+            });}
+            else{
+             window.alert("No of tickets excedded the limit");
+            }
+        }
+        else {
+          window.alert('login to book the ticket');
+        }
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>
